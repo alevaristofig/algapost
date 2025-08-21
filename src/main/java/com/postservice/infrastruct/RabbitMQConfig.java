@@ -1,0 +1,34 @@
+package com.postservice.infrastruct;
+
+import org.springframework.amqp.core.ExchangeBuilder;
+import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Configuration
+public class RabbitMQConfig {
+
+	private static final String TEXT_PROCESSOR = "text-processor-service.post-processing.v1";
+	private static final String FANOUT_TEXT_PROCESSOR = "text-processor-service.post-processing.v1"+".e";
+	private static final String QUEU_TEXT_PROCESSOR = "text-processor-service.post-processing.v1"+".q";
+	
+	@Bean
+	public Jackson2JsonMessageConverter jackson2JsonMessageConverter(ObjectMapper mapper) {
+		return new Jackson2JsonMessageConverter(mapper);
+	}
+	
+	@Bean
+	public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
+		return new RabbitAdmin(connectionFactory);
+	}
+	
+	@Bean
+	public FanoutExchange exchange() {
+		return ExchangeBuilder.fanoutExchange(FANOUT_TEXT_PROCESSOR).build();
+	}
+}
