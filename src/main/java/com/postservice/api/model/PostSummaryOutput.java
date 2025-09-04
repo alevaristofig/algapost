@@ -1,14 +1,14 @@
 package com.postservice.api.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class PostOutput {
+@Builder
+public class PostSummaryOutput  {
 
 	private String id;
 	private String title;
-	private String body;
+	private String summary;
 	private String author;
-	private Integer wordCount;
-	private Float calculatedValue;
 }
