@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: PostService
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: postrabbitmq
+    password: postrabbitmq!@#100
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: mongoDbPost 
