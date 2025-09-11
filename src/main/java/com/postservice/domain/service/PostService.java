@@ -1,5 +1,7 @@
 package com.postservice.domain.service;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +14,13 @@ public class PostService {
 	@Autowired
 	private NotificacaoRabbitService notificacaoRabbitService;	
 
-	public void criar(PostInput input) {
-		notificarRabbitMQ(input);
+	public void criar(PostInput input, UUID id) {
+		notificarRabbitMQ(input,id);
 	}
 	
-	private void notificarRabbitMQ(PostInput input) {
+	private void notificarRabbitMQ(PostInput input, UUID id) {
 		try {
-			notificacaoRabbitService.notiticar(input, RabbitMQConfig.QUEUE_TEXT_PROCESSOR);
+			notificacaoRabbitService.notiticar(input, RabbitMQConfig.QUEUE_TEXT_PROCESSOR, id);
 		} catch(RuntimeException e) {
 			System.out.println(e.getMessage());
 		}
