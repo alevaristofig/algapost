@@ -20,7 +20,7 @@ public class PostService {
 	
 	private void notificarRabbitMQ(PostInput input, UUID id) {
 		try {
-			notificacaoRabbitService.notiticar(input, RabbitMQConfig.QUEUE_TEXT_PROCESSOR, id);
+			notificacaoRabbitService.notiticar(input, RabbitMQConfig.FANOUT_TEXT_PROCESSOR, id);
 		} catch(RuntimeException e) {
 			System.out.println(e.getMessage());
 		}

@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class RabbitMQConfig {
 
 	private static final String TEXT_PROCESSOR = "text-processor-service.post-processing.v1";
-	private static final String FANOUT_TEXT_PROCESSOR = "text-processor-service.post-processing.v1"+".e";
+	public static final String FANOUT_TEXT_PROCESSOR = "text-processor-service.post-processing.v1"+".e";
 	public static final String QUEUE_TEXT_PROCESSOR = "text-processor-service.post-processing.v1"+".q";
 	
 	@Bean
