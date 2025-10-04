@@ -7,6 +7,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 import com.postservice.api.model.PostInput;
+import com.postservice.infrastruct.rabbitmq.RabbitMQConfig;
 
 import lombok.AllArgsConstructor;
 
@@ -24,6 +25,6 @@ public class NotificacaoRabbitService {
 			return message;
 		};
 		
-		rabbitTemplate.convertAndSend(exchange, "", input, messagePostProcessor);
+		rabbitTemplate.convertAndSend("", RabbitMQConfig.QUEUE_TEXT_PROCESSOR, input, messagePostProcessor);
 	}
 }
