@@ -16,7 +16,7 @@ import lombok.Setter;
 @Document("post")
 public class Post {
 	
-	private UUID id;
+	private String id;
 
 	private String title;
 	

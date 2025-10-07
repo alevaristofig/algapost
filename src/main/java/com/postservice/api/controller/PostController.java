@@ -27,6 +27,13 @@ public class PostController {
 	public PostSummaryOutput criar(@RequestBody @Validated PostInput input) {
 		UUID id = IdGenerator.generateTimeBaseUUID();
 		
+		service.gravarPost(PostSummaryOutput.builder()
+				.id(id.toString())
+				.title(input.getTitle())
+				.summary(input.getBody())
+				.author(input.getAuthor())
+				.build());
+		
 		service.criar(input,id);
 		
 		return PostSummaryOutput.builder()
