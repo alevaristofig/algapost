@@ -1,5 +1,6 @@
 package com.postservice.domain.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,10 @@ public class PostService {
 	@Autowired
 	private PostProcessorRepository repositoryProcessor;
 
+	public List<Post> listar() {
+		return repository.findAll();
+	}
+	
 	public void criar(PostInput input, UUID id) {
 		notificarRabbitMQ(input,id);
 	}
