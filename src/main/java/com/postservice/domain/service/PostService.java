@@ -1,6 +1,7 @@
 package com.postservice.domain.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,14 @@ public class PostService {
 	
 	public void gravar(PostProcessorListener post) {
 		repositoryProcessor.save(post);
+	}
+	
+	public Optional<Post> buscarPost(String id) {
+		return repository.findById(id);
+	}
+	
+	public Optional<PostProcessorListener> buscarPostProcessor(String id) {
+		return repositoryProcessor.findById(id);
 	}
 	
 	private void notificarRabbitMQ(PostInput input, UUID id) {
