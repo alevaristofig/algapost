@@ -2,12 +2,14 @@ package com.postservice.api.controller;
 
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +37,16 @@ public class PostController {
 	@GetMapping("/listarpostprocessor")
 	public List<PostProcessorListener> listarPostProcessor() {
 		return service.listarPostProcessor();
+	}
+	
+	@GetMapping("/buscarpost/{id}")
+	public Optional<Post> buscarPost(@PathVariable("id") String id){
+		return service.buscarPost(id);
+	}
+	
+	@GetMapping("/buscarpostprocessor/{id}")
+	public Optional<PostProcessorListener> buscarPostProcessor(@PathVariable("id") String id){
+		return service.buscarPostProcessor(id);
 	}
 	
 	@PostMapping

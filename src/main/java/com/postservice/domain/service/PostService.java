@@ -60,7 +60,7 @@ public class PostService {
 	}
 	
 	public Optional<PostProcessorListener> buscarPostProcessor(String id) {
-		return repositoryProcessor.findById(id);
+		return repositoryProcessor.findByPostId(id);
 	}
 	
 	private void notificarRabbitMQ(PostInput input, UUID id) {
