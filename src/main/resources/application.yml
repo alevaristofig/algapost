@@ -8,6 +8,9 @@ spring:
     password: rabbitmqPost@!#
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: mongoDbPost 
+      uri: mongodb://algapost:algapost!%40%23100@localhost:27017/mongoDbPost?authSource=admin
+     # host:  workspace_algapost-mongoDbPost-1
+     # port: 27017
+     # username: algapost
+     # password: algapost!@#100
+     # database: mongoDbPost 
