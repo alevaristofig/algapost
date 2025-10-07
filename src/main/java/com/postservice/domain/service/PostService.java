@@ -26,8 +26,12 @@ public class PostService {
 	@Autowired
 	private PostProcessorRepository repositoryProcessor;
 
-	public List<Post> listar() {
+	public List<Post> listarPost() {
 		return repository.findAll();
+	}
+	
+	public List<PostProcessorListener> listarPostProcessor() {
+		return repositoryProcessor.findAll();
 	}
 	
 	public void criar(PostInput input, UUID id) {

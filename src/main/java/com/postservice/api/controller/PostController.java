@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.postservice.api.model.PostInput;
 import com.postservice.api.model.PostSummaryOutput;
 import com.postservice.domain.model.Post;
+import com.postservice.domain.model.PostProcessorListener;
 import com.postservice.domain.service.PostService;
 import com.postservice.domain.utility.IdGenerator;
 
@@ -26,9 +27,14 @@ public class PostController {
 	@Autowired
 	private PostService service;
 	
-	@GetMapping
-	public List<Post> listar() {
-		return service.listar();
+	@GetMapping("/listarpost")
+	public List<Post> listarPost() {
+		return service.listarPost();
+	}
+	
+	@GetMapping("/listarpostprocessor")
+	public List<PostProcessorListener> listarPostProcessor() {
+		return service.listarPostProcessor();
 	}
 	
 	@PostMapping
